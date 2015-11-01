@@ -1,10 +1,9 @@
 #!/bin/sh
 
-Gimp="$1"
-Input="$2"
-Output="$3"
+Input="$1"
+Output="$2"
 
-$Gimp --new-instance --no-interface --no-fonts --no-data --batch-interpreter 'python-fu-eval' --batch - << EOF
+gimp --new-instance --no-interface --no-fonts --no-data --batch-interpreter 'python-fu-eval' --batch - << EOF
 image = pdb.gimp_file_load("$Input", "$Input")
 pdb.gimp_image_convert_rgb(image)
 layer = pdb.gimp_image_merge_visible_layers(image, CLIP_TO_IMAGE)
@@ -20,7 +19,7 @@ pdb.plug_in_normalmap(image,
                       0, # 0 = normalize only, 1 = Biased RGB, 2 = Red, 3 = Green, 4 = Blue, 5 = Max RGB, 6 = Min RGB, 7 = Colorspace, 8 = Normalize only, 9 = Convert to height map
                       0, # options for DU/DV map conversion
                       0, # X invert (0 or 1)
-                      1, # Y invert (0 or 1)
+                      0, # Y invert (0 or 1)
                       0, # swap RGB (0 or 1)
                       0.0, # contrast
                       layer)

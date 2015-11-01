@@ -1,0 +1,6 @@
+#!/bin/sh
+InputFile="$1"
+OutputFile="$2"
+BlenderOptions='--background -noaudio -noglsl -nojoystick'
+Script="$(dirname "$0")/ExportJSON.py"
+blender "$InputFile" $BlenderOptions --python "$Script" -- "$OutputFile" > /dev/null

@@ -1,3 +1,0 @@
-!normalmap = |> ^o Exporting normal map %f^ "@(APOAPSIS_BUILD_TOOLS)/ExportNormalMap.sh" @(GIMP) %f %o |>
-!planetsurface = |> ^o Generating planet surface %f^ "@(APOAPSIS_BUILD_TOOLS)/GeneratePlanetSurface.sh" %f %o |>
-!blender = |> ^o Exporting %f^ "@(APOAPSIS_BUILD_TOOLS)/ExportJSON.sh" @(BLENDER) %f %o |> %B.json

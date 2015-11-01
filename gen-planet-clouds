@@ -1,0 +1,36 @@
+#!/usr/bin/env python2
+import OpenImageIO as oiio
+import sys
+
+def AdaptSpecChannelCount( refereceSpec, nchannels ):
+    return oiio.ImageSpec(refereceSpec.width,
+                          refereceSpec.height,
+                          nchannels,
+                          refereceSpec.format)
+
+def AdaptROIChannels( referenceROI, chbegin, chend ):
+    return oiio.ROI(referenceROI.xbegin,
+                    referenceROI.xend,
+                    referenceROI.ybegin,
+                    referenceROI.yend,
+                    referenceROI.zbegin,
+                    referenceROI.zend,
+                    chbegin,
+                    chend)
+
+density = oiio.ImageBuf(sys.argv[1])
+dudvRGB = oiio.ImageBuf(sys.argv[2])
+
+out = oiio.ImageBuf(AdaptSpecChannelCount(density.spec(), 3))
+roi = oiio.get_roi(out.spec())
+
+dudvROI      = AdaptROIChannels(roi, 0, 2)
+intensityROI = AdaptROIChannels(roi, 0, 1)
+
+if not oiio.ImageBufAlgo.paste(out, 0, 0, 0, 0, dudvRGB, dudvROI):
+    raise RuntimeError(out.geterror())
+if not oiio.ImageBufAlgo.paste(out, 0, 0, 0, 2, density, intensityROI):
+    raise RuntimeError(out.geterror())
+
+out.specmod().attribute('oiio:UnassociatedAlpha', 1)
+out.write(sys.argv[3])
