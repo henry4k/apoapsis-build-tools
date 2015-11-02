@@ -34,7 +34,8 @@ clean:
 $(ARCHIVE): Makefile $(ARCHIVE_CONTENTS)
 	zip --compression-method deflate -9 --suffixes '.png:.ogg' $@ $(ARCHIVE_CONTENTS)
 
-%.json : %.blend
+%.json: %.blend
 	$(BUILD_TOOLS)/blend2json $< $@
 
-# %.png : %.xcf
+%.png: %.xcf
+	$(BUILD_TOOLS)/xcf2png $< $@
