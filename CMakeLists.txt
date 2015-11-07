@@ -13,3 +13,6 @@ include_directories(${OIIO_INCLUDE_DIR})
 
 add_executable(gen-normalmap gen-normalmap.c normalmap.c image.cpp)
 target_link_libraries(gen-normalmap ${OIIO_LIBRARY})
+
+add_executable(gen-distancefield gen-distancefield.c third-party/edtaa3/edtaa3.c image.cpp)
+target_link_libraries(gen-distancefield ${OIIO_LIBRARY})

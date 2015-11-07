@@ -52,6 +52,8 @@ static bool ParseArguments( int argc,
                 }
                 else
                 {
+                    printf("Option needs a value.\n");
+                    return false;
                 }
             }
             else if(strcmp(argv[i], "-w") == 0)

@@ -9,8 +9,8 @@ related projects.
 ## Dependencies
 
 - blender
-- GIMP with the normalmap plugin
-- [OpenImageIO](http://openimageio.org) and its Python bindings
+- GIMP or xcftools for XCF to PNG export
+- [OpenImageIO](http://openimageio.org) (oiiotool, libraries and headers)
 
 
 ## Licence and copyright

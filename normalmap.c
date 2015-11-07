@@ -290,6 +290,7 @@ void GenerateNormalMap( int width,
     Kernel * yKernel;
     CreateFilterKernels(filter, &xKernel, &yKernel);
 
+    #pragma omp parallel for collapse(2)
     for(int y = 0; y < height; y++)
     for(int x = 0; x < width;  x++)
     {
