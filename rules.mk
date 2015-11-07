@@ -8,7 +8,7 @@ GENERATED += .gitignore $(ARCHIVE)
 
 
 
-all: .gitignore test package
+all: .gitignore $(ARCHIVE_CONTENTS)
 
 test:
 	luacheck
