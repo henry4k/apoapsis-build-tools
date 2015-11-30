@@ -1,8 +1,13 @@
 #!/bin/sh
 Height="$1"
-DuDv="$2"
-Out="$3"
-oiiotool "$height" --ch 0 \
-         "$DuDv"   --ch 0,1 \
+Out="$2"
+
+NormalMap="${Height}_TempNormalMap.png"
+$(dirname $0)/gen-normalmap -w "$Height" "$NormalMap"
+
+oiiotool "$Height"    --ch 0 \
+         "$NormalMap" --ch 0,1 \
          --chappend \
          -o "$Out"
+
+rm "$NormalMap"
