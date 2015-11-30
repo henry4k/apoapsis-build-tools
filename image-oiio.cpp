@@ -1,7 +1,4 @@
-#include <assert.h>
-#include <string.h> // memset
 #include <stdio.h> // fprintf
-#include <stdlib.h> // malloc, free
 #include <OpenImageIO/imageio.h>
 #include "image.h"
 
@@ -9,25 +6,6 @@
 
 OIIO_NAMESPACE_USING
 
-
-
-Image * CreateImage( int width, int height, int channels )
-{
-    Image * image = (Image *)malloc(sizeof(Image));
-    image->width    = width;
-    image->height   = height;
-    image->channels = channels;
-    image->data     = (float *)malloc(sizeof(float)*width*height*channels);
-    return image;
-}
-
-void FreeImage( Image * image )
-{
-    assert(image->data != NULL);
-    free(image->data);
-    memset(image, 0, sizeof(Image));
-    free(image);
-}
 
 Image * ReadImage( const char * fileName )
 {
