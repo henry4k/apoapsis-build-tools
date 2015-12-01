@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.8)
 
 project(apoapsis-build-tools)
 
-if(UNIX)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --std=c99") # Nasty, I know.
+if(NOT MSVC)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --std=c99")
 endif()
 
 option(USE_OIIO "Use OpenImageIO to read and write images.")
