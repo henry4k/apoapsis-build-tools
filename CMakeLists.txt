@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 2.8)
 
 project(apoapsis-build-tools)
 
+if(UNIX)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --std=c99") # Nasty, I know.
+endif()
+
 option(USE_OIIO "Use OpenImageIO to read and write images.")
 if(USE_OIIO)
     set(OIIO_INCLUDE_DIR NOTFOUND CACHE PATH "")
