@@ -20,7 +20,7 @@ clean:
 	rm -rf $(GENERATED)
 
 .PHONY: all test package clean
-.DEFAULT: all
+.DEFAULT_GOAL = all
 
 
 
