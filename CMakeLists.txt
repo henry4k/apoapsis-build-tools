@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(apoapsis-build-tools)
+project(konstrukt-build-tools)
 
 if(NOT MSVC)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99" CACHE STRING "" FORCE)

@@ -1,8 +1,8 @@
-Apoapsis Build Tools
-====================
+Konstrukt Build Tools
+=====================
 
 Build tools used by several
-[Apoapsis](https://github.com/henry4k/apoapsis)
+[Konstrukt](https://github.com/henry4k/konstrukt)
 related projects.
 
 
