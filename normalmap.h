@@ -31,13 +31,21 @@ const char * NormalMapFilterToString( NormalMapFilter filter );
  *
  * @param wrap
  * Filter will wrap around the image - useful when image will be tiled.
+ *
+ * @param invertX
+ * Flip the normals X axis.
+ *
+ * @param invertY
+ * Flip the normals Y axis.
  */
 void GenerateNormalMap( int width,
                         int height,
                         const float * heightMap,
                         float * normalMap,
                         NormalMapFilter filter,
-                        bool wrap );
+                        bool wrap,
+                        bool invertX,
+                        bool invertY );
 
 #ifdef __cplusplus
 }
