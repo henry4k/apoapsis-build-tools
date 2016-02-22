@@ -19,7 +19,6 @@ static void PrintHelp( const char * programName )
     printf(")\n");
 
     printf("\t-w (enable wrapping)\n");
-    printf("\t-x (invert X)\n");
     printf("\t-y (invert Y)\n");
 }
 
@@ -38,7 +37,6 @@ static bool ParseArguments( int argc,
                             char * * argv,
                             NormalMapFilter * filter,
                             bool * wrap,
-                            bool * invertX,
                             bool * invertY,
                             const char * * inputFileName,
                             const char * * outputFileName )
@@ -63,10 +61,6 @@ static bool ParseArguments( int argc,
             else if(strcmp(argv[i], "-w") == 0)
             {
                 *wrap = true;
-            }
-            else if(strcmp(argv[i], "-x") == 0)
-            {
-                *invertX = true;
             }
             else if(strcmp(argv[i], "-y") == 0)
             {
@@ -113,7 +107,6 @@ int main( int argc, char * * argv )
     {
         NormalMapFilter filter = DefaultFilter;
         bool wrap = false;
-        bool invertX = false;
         bool invertY = false;
         const char * inputFileName = NULL;
         const char * outputFileName = NULL;
@@ -121,7 +114,6 @@ int main( int argc, char * * argv )
                            argv,
                            &filter,
                            &wrap,
-                           &invertX,
                            &invertY,
                            &inputFileName,
                            &outputFileName))
@@ -136,7 +128,6 @@ int main( int argc, char * * argv )
                           output->data,
                           filter,
                           wrap,
-                          invertX,
                           invertY);
 
         WriteImage(output, outputFileName);
